@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuad Gurbanov - Data Scientist and AI Engineer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #03032b; /* Очень темно-синий цвет */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #03032b;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #03032b;
+        }
+        nav a {
+            color: #ffffff;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        .container {
+            padding: 20px;
+        }
+        ul.portfolio-list li {
+            margin-bottom: 20px; /* Добавлено больше пространства под каждым элементом списка */
+        }
+        .contact-form {
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background-color: #575757;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #797979;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fuad Gurbanov</h1>
+        <p>Data Scientist and AI Engineer</p>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Email: fuad.152022@gmail.com(main)/fuadgurbanov.ai@gmail.com</p>
+            <p>Phone: +994513104244</p>
+            <p>Location: Baku, Azerbaijan</p>
+            <p><a href="https://linkedin.com/in/fuad-gurbanov" target="_blank">LinkedIn</a> | <a href="https://github.com/Fuad-grb" target="_blank">GitHub</a></p>
+        </section>
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <ul class="portfolio-list">
+                <li><strong>Churn Modelling with Python:</strong> Churn Modelling for Telecommunication company located in EU provided by PwC Switzerland. This project includes EDA, Feature Engineering, Machine Learning modelling with pipeline for predicting Churn customers.</li>
+                <li><strong>Data Cleaning on Electricity Usage Data with Python:</strong> In this project I have been provided with data of Electricity Provider Company. As data was in a unstructured and unsorted format I had to clean data and turn it into usable format. My second task was select optimal contract based on usage history.</li>
+                <li><strong>Image Classification with Python:</strong> Given the Image Classification dataset consists of 6 classes, I am asked to build a model that can correctly classify images. I applied a method called transfer learning and tried three neural networks architectures: VGG16, and Inception-v3 Build a neural model that can classify with 92% accuracy.</li>
+            </ul>
+        </section>
+        <section id="blog">
+            <h2>Blog</h2>
+            <p>Coming soon...</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-form">
+                <form action="{% url 'send_email' %}" method="post">
+                    {% csrf_token %}
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+                {% if success %}
+                    <p class="success-message">Your message has been sent successfully!</p>
+                {% endif %}
+            </div>
+        </section>
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <p>Coming soon...</p>
+        </section>
+    </div>
+</body>
+</html>
+
+</html>
