@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
+    {% load static %}
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('C:\Users\hp\OneDrive\Рабочий стол\bio\mywebsite\static\home-bg.jpg');
+            background-image: url("{% static 'home-bg.jpg' %}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
