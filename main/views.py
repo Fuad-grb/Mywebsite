@@ -1,6 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from django.contrib.auth import login, authenticate
+from .forms import UserRegistrationForm, PostForm
+from .models import Post
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
+
 
 def index(request):
     return render(request, 'main/index.html')
@@ -40,3 +47,50 @@ def send_email(request):
 
 def blog(request):
     return render(request, 'main/blog.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            login(request, user)
+            return redirect('index')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'main/register.html', {'form': form})
+
+def create_post(request):
+    if not request.user.is_authenticated:
+        return redirect('login')  # Redirect to login page if user is not authenticated
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('blog')
+    else:
+        form = PostForm()
+    return render(request, 'main/create_post.html', {'form': form})
+
+def blog(request):
+    posts = Post.objects.all().order_by('-created_at')
+    return render(request, 'main/blog.html', {'posts': posts})
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('index')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'main/login.html', {'form': form})
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('index')
