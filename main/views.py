@@ -62,7 +62,7 @@ def register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'main/register.html', {'form': form})
-
+@login_required
 def create_post(request):
     if not request.user.is_authenticated:
         return redirect('login')  # Redirect to login page if user is not authenticated
