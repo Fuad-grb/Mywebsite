@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('{% static "C:\Users\hp\Downloads\startbootstrap-clean-blog-gh-pages\startbootstrap-clean-blog-gh-pages\assets\img\home-bg.jpg" %}'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /*  */
+            border-radius: 5px;
+        }
+        .post {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .post h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Blog</h1>
+    </header>
+    <div class="container">
+        <section id="blog">
+            <div class="post">
+                <h2>Blog Post Title</h2>
+                <p>Blog post content...</p>
+            </div>
+            <!-- new posts here -->
+        </section>
+    </div>
+</body>
+
+</html>

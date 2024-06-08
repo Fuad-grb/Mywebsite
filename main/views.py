@@ -5,6 +5,7 @@ from django.http import HttpResponse
 def index(request):
     return render(request, 'main/index.html')
 
+
 def send_email(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -36,3 +37,6 @@ def send_email(request):
         return render(request, 'main/index.html', {'success': True})
 
     return HttpResponse('Invalid request method.')
+
+def blog(request):
+    return render(request, 'main/blog.html')
